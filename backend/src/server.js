@@ -69,9 +69,10 @@ app.use(notFound);
 app.use(errorHandler);
 
 // ─── Start Server ─────────────────────────────────────────────────────────────
-// Force '127.0.0.1' (IPv4) instead of 'localhost' which Windows resolves as ::1 (IPv6)
+// Production (Render): bind to 0.0.0.0 so Render can detect the port
+// Development (Windows): bind to 127.0.0.1 to force IPv4
 const PORT = process.env.PORT || 5000;
-const HOST = '127.0.0.1';
+const HOST = process.env.NODE_ENV === 'production' ? '0.0.0.0' : '127.0.0.1';
 
 httpServer.listen(PORT, HOST, () => {
   logger.info(`🏥 Hospital Queue API → http://${HOST}:${PORT} [${process.env.NODE_ENV}]`);
