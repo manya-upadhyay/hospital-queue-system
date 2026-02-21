@@ -1,0 +1,38 @@
+services:
+  # Backend API
+  - type: web
+    name: hospital-queue-api
+    env: node
+    region: oregon
+    plan: starter
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: ML_SERVICE_URL
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+
+  # ML Service
+  - type: web
+    name: hospital-queue-ml
+    env: python
+    region: oregon
+    plan: starter
+    rootDir: ml-service
+    buildCommand: pip install -r requirements.txt && python scripts/train.py
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0

@@ -1,0 +1,12 @@
+node_modules/
+.env
+*.log
+logs/
+dist/
+build/
+__pycache__/
+*.pyc
+*.pkl
+.DS_Store
+.env.local
+coverage/
