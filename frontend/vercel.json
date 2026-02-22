@@ -5,9 +5,5 @@
   "framework": "create-react-app",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
-  ],
-  "env": {
-    "REACT_APP_API_URL": "@hospital_queue_api_url",
-    "REACT_APP_SOCKET_URL": "@hospital_queue_socket_url"
-  }
+  ]
 }
