@@ -1,6 +1,6 @@
 # 🏥 AI-Based Smart Hospital Queue Management System
 
-A production-ready, cloud-based intelligent hospital queue optimization platform built with microservices architecture.
+A production-ready, cloud-based intelligent hospital queue optimization platform built with microservice architecture.
 https://hospital-queue-system-1.vercel.app/
 
 ## 🎯 Overview
